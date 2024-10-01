@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SimpleCalculatorCsharpCourse
 {
-    internal class CalculatorEngine
+    public class CalculatorEngine
     {
         public double Calculate(Operation operation, double firstNumber, double secondNumber) {
             switch (operation) {

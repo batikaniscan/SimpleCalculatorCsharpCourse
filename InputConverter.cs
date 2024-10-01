@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SimpleCalculatorCsharpCourse
 {
-    internal class InputConverter
+    public class InputConverter
     {
         public double ConvertInputToNumeric(string argTextInput) {
             double convertedNumber;

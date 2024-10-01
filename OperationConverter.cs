@@ -15,7 +15,7 @@ namespace SimpleCalculatorCsharpCourse
         MODULUS
     }
 
-    internal class OperationConverter
+    public class OperationConverter
     {
         public Operation ConvertInputToOperation(string argTextInput) {
             switch (argTextInput.Trim().ToLower()) {
