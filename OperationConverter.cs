@@ -17,31 +17,44 @@ namespace SimpleCalculatorCsharpCourse
 
     public class OperationConverter
     {
+        private Dictionary<string, Operation> operationDictionary;
+
+        public OperationConverter() {
+            operationDictionary = new Dictionary<string, Operation>();
+            initializeDictionary();
+        }
+
+        private void initializeDictionary() {
+            operationDictionary.Add("add", Operation.ADDITION);
+            operationDictionary.Add("addition", Operation.ADDITION);
+            operationDictionary.Add("+", Operation.ADDITION);
+
+            operationDictionary.Add("substract", Operation.SUBSTRACTION);
+            operationDictionary.Add("substraction", Operation.SUBSTRACTION);
+            operationDictionary.Add("-", Operation.SUBSTRACTION);
+
+            operationDictionary.Add("multiply", Operation.MULTIPLICATION);
+            operationDictionary.Add("multiplication", Operation.MULTIPLICATION);
+            operationDictionary.Add("x", Operation.MULTIPLICATION);
+            operationDictionary.Add("*", Operation.MULTIPLICATION);
+
+            operationDictionary.Add("divide", Operation.DIVISION);
+            operationDictionary.Add("division", Operation.DIVISION);
+            operationDictionary.Add("/", Operation.DIVISION);
+
+            operationDictionary.Add("remainder", Operation.MODULUS);
+            operationDictionary.Add("modulus", Operation.MODULUS);
+            operationDictionary.Add("%", Operation.MODULUS);
+        }
+
         public Operation ConvertInputToOperation(string argTextInput) {
-            switch (argTextInput.Trim().ToLower()) {
-                case "add":
-                case "addition":
-                case "+":
-                    return Operation.ADDITION;
-                case "substract":
-                case "substraction":
-                case "-":
-                    return Operation.SUBSTRACTION;
-                case "multiply":
-                case "multiplication":
-                case "x":
-                case "*":
-                    return Operation.MULTIPLICATION;
-                case "divide":
-                case "division":
-                case "/":
-                    return Operation.DIVISION;
-                case "remainder":
-                case "modulus":
-                case "%":
-                    return Operation.MODULUS;
-                default:
-                    throw new InvalidOperationException("This operation is not recognized."); 
+            if (operationDictionary.TryGetValue(argTextInput.Trim().ToLower(), out Operation operation))
+            {
+                Console.WriteLine(operation);
+                return operation;
+            }
+            else {
+                throw new InvalidOperationException("This operation is not recognized.");
             }
         }
     }
