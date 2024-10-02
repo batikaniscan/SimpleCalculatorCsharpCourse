@@ -50,11 +50,29 @@ namespace SimpleCalculatorCsharpCourse
         public Operation ConvertInputToOperation(string argTextInput) {
             if (operationDictionary.TryGetValue(argTextInput.Trim().ToLower(), out Operation operation))
             {
-                Console.WriteLine(operation);
                 return operation;
             }
             else {
                 throw new InvalidOperationException("This operation is not recognized.");
+            }
+        }
+
+        public char GetOperationSymbol(Operation operation)
+        {
+            switch (operation)
+            {
+                case Operation.ADDITION:
+                    return '+';
+                case Operation.SUBSTRACTION:
+                    return '-';
+                case Operation.MULTIPLICATION:
+                    return '*';
+                case Operation.DIVISION:
+                    return '/';
+                case Operation.MODULUS:
+                    return '%';
+                default:
+                    throw new InvalidOperationException("This operation is not recognized.");
             }
         }
     }

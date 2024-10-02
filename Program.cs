@@ -15,13 +15,18 @@ namespace SimpleCalculatorCsharpCourse
             CalculatorEngine calculatorEngine = new CalculatorEngine();
 
             try {
+                Console.WriteLine("- Simple Calculator Application -\n");
+                Console.Write("Enter 1st number: ");
                 double firstNumber = inputConverter.ConvertInputToNumeric(Console.ReadLine());
+                Console.Write("Enter 2nd number: ");
                 double secondNumber = inputConverter.ConvertInputToNumeric(Console.ReadLine());
+                Console.Write("Enter operation: ");
                 Operation operation = operationConverter.ConvertInputToOperation(Console.ReadLine());
+                char operationSymbol = operationConverter.GetOperationSymbol(operation);
 
                 double result = calculatorEngine.Calculate(operation, firstNumber, secondNumber);
-
-                Console.WriteLine(result);
+                
+                Console.WriteLine("{0} {1} {2} = {3}", firstNumber, operationSymbol, secondNumber, result);
             } catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
